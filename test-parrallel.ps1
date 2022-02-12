@@ -8,7 +8,8 @@
 # - https://firebog.net/
 # File name/path of domain list:
 
-$domain_list ='coinminers.txt' # One FQDN per line in file.
+# $domain_list ='examples\coinminers.txt' # One FQDN per line in file.
+$domain_list ='examples\simple_malvertising.txt' # One FQDN per line in file.
 
 # IP address of the nameserver used for lookups:
 $ns1_ip='1.1.1.1' # Cloudflare
