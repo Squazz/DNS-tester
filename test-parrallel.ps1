@@ -8,8 +8,8 @@
 # - https://firebog.net/
 # File name/path of domain list:
 
-# $domain_list ='examples\coinminers.txt' # One FQDN per line in file.
-$domain_list ='examples\simple_malvertising.txt' # One FQDN per line in file.
+$domain_list ='examples\coinminers.txt' # One FQDN per line in file.
+# $domain_list ='examples\simple_malvertising.txt' # One FQDN per line in file.
 
 # IP address of the nameserver used for lookups:
 $ns1_ip='1.1.1.1' # Cloudflare
@@ -40,7 +40,7 @@ Get-Content .\$domain_list | ForEach-Object -parallel {
     $TempFileName = [System.Guid]::NewGuid().Guid + ".csv" #GUID.txt will ensure randomness
     $FullTempFilePath = Join-Path -Path "$using:TempPath" -ChildPath $TempFileName
     "$line;$ip1;$ip2;$ip3;$ip4" | Out-File -Path $FullTempFilePath -Force #Write out to the random file
-}
+} -ThrottleLimit 5 
 
 # Start CSV
 $fileName = 'result.csv';
